@@ -1,4 +1,5 @@
-const pool = require('../db/pool')
+const pool = require('../../db/pool')
+const { productTitleValidator } = require('../validators/validators')
 
 exports.getProducts = async (req, res) => {
     try {
@@ -34,7 +35,18 @@ exports.createProduct = async (req, res) => {
         const query = 'INSERT INTO products (title, short_description, stock, price) VALUES ($1, $2, $3, $4)'
         const values = [title, short_description, stock, price]
 
-        await pool.query(query, values)
+        if (!productTitleValidator(title)) {
+            res.status(400).json({ error: 'Product title must be less than 255 characters.' })
+            return
+        }
+
+        const result = await pool.query(query, values)
+
+        if (result.rowCount == 0) {
+            res.status(400).json({ error: 'Product cannot be created, check values and try again' })
+            return
+        }
+
         res.json({ message: 'Product created.' })
 
     } catch (error) {
@@ -48,6 +60,11 @@ exports.updateProduct = async (req, res) => {
         const { title, short_description, stock, price } = req.body
         const values = [title, short_description, stock, price, req.params.id]
         const query = 'UPDATE products SET title = $1, short_description = $2, stock = $3, price = $4 WHERE id = $5'
+
+        if (!productTitleValidator(title)) {
+            res.status(400).json({ error: 'Product title must be less than 255 characters.' })
+            return
+        }
 
         const result = await pool.query(query, values)
 
