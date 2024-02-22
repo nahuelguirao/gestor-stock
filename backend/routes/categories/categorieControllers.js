@@ -12,13 +12,13 @@ exports.getCategories = async (req, res) => {
     }
 }
 
-exports.getSpecificCategorie = async (req, res) => {
+exports.getSpecificCategory = async (req, res) => {
     try {
         const query = 'SELECT * FROM categories WHERE id = $1'
         const result = await pool.query(query, [req.params.id])
 
         if (result.rowCount == 0) {
-            res.status(404).json({ message: 'Categorie not found.' })
+            res.status(404).json({ message: 'Category not found.' })
             return
         }
 
@@ -26,11 +26,11 @@ exports.getSpecificCategorie = async (req, res) => {
 
     } catch (error) {
         console.error(error)
-        res.status(500).json({ error: 'Error getting categorie.' })
+        res.status(500).json({ error: 'Error getting category.' })
     }
 }
 
-exports.createCategorie = async (req, res) => {
+exports.createCategory = async (req, res) => {
     try {
         const { name } = req.body
 
@@ -43,19 +43,19 @@ exports.createCategorie = async (req, res) => {
         const result = await pool.query(query, [name])
 
         if (result.rowCount == 0) {
-            res.status(400).json({ error: 'Categorie cannot be created, check values and try again.' })
+            res.status(400).json({ error: 'Category cannot be created, check values and try again.' })
             return
         }
 
-        res.json({ message: 'Categorie created.' })
+        res.json({ message: 'Category created.' })
 
     } catch (error) {
         console.error(error)
-        res.status(500).json({ error: 'Error creating categorie.' })
+        res.status(500).json({ error: 'Error creating category.' })
     }
 }
 
-exports.updateCategorie = async (req, res) => {
+exports.updateCategory = async (req, res) => {
     try {
         const { name } = req.body
         const query = 'UPDATE categories SET name = $1 WHERE id = $2'
@@ -68,32 +68,32 @@ exports.updateCategorie = async (req, res) => {
         const result = await pool.query(query, [name, req.params.id])
 
         if (result.rowCount == 0) {
-            res.status(404).json({ message: 'Categorie not found' })
+            res.status(404).json({ message: 'Category not found' })
             return
         }
 
-        res.json({ message: 'Categorie updated correctly.' })
+        res.json({ message: 'Category updated correctly.' })
 
     } catch (error) {
         console.error(error)
-        res.status(500).json({ error: 'Error updating categorie.' })
+        res.status(500).json({ error: 'Error updating category.' })
     }
 }
 
-exports.deleteCategorie = async (req, res) => {
+exports.deleteCategory = async (req, res) => {
     try {
         const query = 'DELETE FROM categories WHERE id = $1'
         const result = await pool.query(query, [req.params.id])
 
         if (result.rowCount == 0) {
-            res.status(404).json({ message: 'Categorie not found.' })
+            res.status(404).json({ message: 'Category not found.' })
             return
         }
 
-        res.json({ message: 'Product deleted.' })
+        res.json({ message: 'Category deleted.' })
 
     } catch (error) {
         console.error(error)
-        res.status(500).json({ error: 'Error deleting categorie.' })
+        res.status(500).json({ error: 'Error deleting category.' })
     }
 }
