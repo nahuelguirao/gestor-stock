@@ -1,3 +1,5 @@
+import { ProductsList } from "./components/ProductsList";
+
 export function App() {
-  return <h1>App</h1>;
+  return <ProductsList />;
 }
