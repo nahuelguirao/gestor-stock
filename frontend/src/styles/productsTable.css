@@ -4,7 +4,25 @@ main {
 
 main h1 {
     text-align: center;
+}
+
+.productsHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 30px;
+}
+
+.addProductSpan {
+    cursor: pointer;
+    font-weight: 300;
+    font-size: 1.3rem;
+    transition: 200ms;
+}
+
+.addProductSpan:hover {
+    color: rgb(58, 127, 207);
+    transform: scale(1.1);
 }
 
 table {
@@ -14,8 +32,6 @@ table {
     padding: 0 25px;
     border-radius: 16px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    display: flex;
-    flex-direction: column;
 }
 
 table h2 {
@@ -37,10 +53,6 @@ tr {
     align-items: center;
     text-align: center;
     gap: 16px;
-}
-
-table thead tr:first-child {
-    border-top: 1px solid #eeeeeea6;
 }
 
 table tbody tr:last-child {
@@ -69,10 +81,11 @@ td:last-child {
     width: 25%;
 }
 
+.centerContainer {
+    text-align: center;
+}
+
 @media (min-width: 450px) {
-    h2 {
-        font-size: 2rem;
-    }
 
     tr td:nth-child(2),
     tr th:nth-child(2) {
@@ -91,5 +104,45 @@ td:last-child {
     td {
         font-size: 1.2rem;
         font-weight: 300;
+    }
+}
+
+/* Loader styles */
+
+svg {
+    width: 3.25em;
+    transform-origin: center;
+    animation: rotate4 2s linear infinite;
+}
+
+circle {
+    fill: none;
+    stroke: hsl(214, 97%, 59%);
+    stroke-width: 2;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: dash4 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate4 {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash4 {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 90, 200;
+        stroke-dashoffset: -35px;
+    }
+
+    100% {
+        stroke-dashoffset: -125px;
     }
 }

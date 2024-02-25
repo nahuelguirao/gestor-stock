@@ -3,19 +3,26 @@ import { ProductsContext } from "../context/ProductsContext";
 import { TableHeader } from "./ProductsTable/TableHeader";
 import { TableBody } from "./ProductsTable/TableBody";
 import "../styles/productsTable.css";
+import { Loading } from "./Loading";
+import { ErrorContainer } from "./ProductsTable/Error";
 
 export function ProductsList() {
   const { isLoading, error, products } = useContext(ProductsContext);
 
   return (
     <main>
-      <h1>Stock Manager</h1>
+      <div className="productsHeader">
+        <h1>Products</h1>
+        <span className="addProductSpan">+Add product </span>
+      </div>
       <section>
-        {isLoading && <p>Loading...</p>}
-        {!isLoading && error && <p>{error}</p>}
+        {/* While loading */}
+        {isLoading && <Loading />}
+        {/* Error */}
+        {!isLoading && error && <ErrorContainer error={error} />}
+        {/* Data mapped */}
         {!isLoading && products && (
           <table>
-            <h2>Products</h2>
             <TableHeader />
             <TableBody products={products} />
           </table>
