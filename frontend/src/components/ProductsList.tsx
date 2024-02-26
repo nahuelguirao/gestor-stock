@@ -2,18 +2,21 @@ import { useContext } from "react";
 import { ProductsContext } from "../context/ProductsContext";
 import { TableHeader } from "./ProductsTable/TableHeader";
 import { TableBody } from "./ProductsTable/TableBody";
-import "../styles/productsTable.css";
 import { Loading } from "./Loading";
 import { ErrorContainer } from "./ProductsTable/Error";
+import { Link } from "react-router-dom";
+import "../styles/productsTable.css";
 
 export function ProductsList() {
-  const { isLoading, error, products } = useContext(ProductsContext);
+  const { products, isLoading, error } = useContext(ProductsContext);
 
   return (
     <main>
       <div className="productsHeader">
         <h1>Products</h1>
-        <span className="addProductSpan">+Add product </span>
+        <Link to={"/add-product"}>
+          <span className="addProductSpan">+Add product </span>
+        </Link>
       </div>
       <section>
         {/* While loading */}
@@ -21,7 +24,7 @@ export function ProductsList() {
         {/* Error */}
         {!isLoading && error && <ErrorContainer error={error} />}
         {/* Data mapped */}
-        {!isLoading && products && (
+        {!isLoading && products && products.length >= 1 && (
           <table>
             <TableHeader />
             <TableBody products={products} />

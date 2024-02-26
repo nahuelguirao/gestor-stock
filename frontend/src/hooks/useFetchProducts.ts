@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { fetchProducts } from "../helpers/dataFetchs";
-import { Product } from "../types/types";
 
-export function useFetchProducts() {
-  //Products, error and loading states
-  const [products, setProducts] = useState<Product[] | null>(null);
+export function useFetchProducts(dispatch: any) {
+  //States
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -21,7 +19,13 @@ export function useFetchProducts() {
 
       const resultProducts = await res.json();
 
-      setProducts(resultProducts);
+      //Declarates and execute 'SET PRODUCTS' in the reducer
+      const action = {
+        type: "SET PRODUCTS",
+        payload: resultProducts,
+      };
+
+      dispatch(action);
     } catch (error) {
       console.error(error);
       setError("Error Fetching Products");
@@ -35,5 +39,5 @@ export function useFetchProducts() {
     getProducts();
   }, []);
 
-  return { products, setProducts, error, isLoading };
+  return { error, isLoading, setError, setIsLoading };
 }
