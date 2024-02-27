@@ -13,4 +13,6 @@ export type InputValues = {
   price: string;
 };
 
-export type Actions = { type: "SET PRODUCTS"; payload: Product[] };
+export type Actions =
+  | { type: "SET PRODUCTS"; payload: Product[] }
+  | { type: "DELETE PRODUCT"; payload: number };
