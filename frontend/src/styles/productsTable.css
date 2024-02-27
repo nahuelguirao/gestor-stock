@@ -1,5 +1,5 @@
 main {
-    padding: 30px 20px;
+    padding: 30px 0;
 }
 
 main h1 {
@@ -33,6 +33,7 @@ table {
     border-radius: 16px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     background-color: #201F1F;
+    overflow: hidden;
 }
 
 table h2 {
@@ -45,6 +46,8 @@ th {
     padding: 20px 0;
     text-align: center;
     text-wrap: pretty;
+    transition: 200ms;
+    max-width: 100%;
 }
 
 tr {
@@ -54,6 +57,7 @@ tr {
     align-items: center;
     text-align: center;
     gap: 16px;
+
 }
 
 table tbody tr:last-child {
@@ -84,6 +88,14 @@ td:last-child {
 
 .centerContainer {
     text-align: center;
+}
+
+.productTitle {
+    cursor: pointer;
+}
+
+.productTitle:hover {
+    color: rgb(58, 127, 207);
 }
 
 @media (min-width: 450px) {

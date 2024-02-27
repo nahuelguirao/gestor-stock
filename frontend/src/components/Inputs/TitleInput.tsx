@@ -8,6 +8,8 @@ export function TitleInput() {
         placeholder="Iphone 18, Keyboard..."
         name="title"
         id="title"
+        min={0}
+        required
       />
     </div>
   );

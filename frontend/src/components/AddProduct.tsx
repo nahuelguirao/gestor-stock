@@ -3,7 +3,7 @@ import { TitleInput } from "./Inputs/TitleInput";
 import { DescriptionInput } from "./Inputs/DescriptionInput";
 import { StockInput } from "./Inputs/StockInput";
 import { PriceInput } from "./Inputs/PriceInput";
-import { AddProductButton } from "./Inputs/AddProductButton";
+import { Button } from "./Inputs/Button";
 import "../styles/addProduct.css";
 
 export function AddProduct() {
@@ -16,7 +16,7 @@ export function AddProduct() {
       <DescriptionInput />
       <StockInput />
       <PriceInput />
-      <AddProductButton />
+      <Button text="Add Product" />
     </form>
   );
 }

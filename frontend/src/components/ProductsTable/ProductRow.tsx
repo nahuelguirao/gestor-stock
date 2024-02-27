@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Product } from "../../types/types";
 
 interface props {
@@ -6,10 +7,19 @@ interface props {
 }
 
 export function ProductRow({ product, index }: props) {
+  const navigate = useNavigate();
+
+  //Navigates to specifif page
+  const updateProduct = () => {
+    navigate(`/update-product/${product.id}`);
+  };
+
   return (
     <tr>
       <td>{index + 1}</td>
-      <td>{product.title}</td>
+      <td className="productTitle" onClick={updateProduct}>
+        {product.title}
+      </td>
       <td>{product.stock}</td>
       <td>${product.price}</td>
     </tr>

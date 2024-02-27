@@ -8,6 +8,8 @@ export function StockInput() {
         placeholder="10, 20..."
         name="stock"
         id="stock"
+        min={0}
+        required
       />
     </div>
   );

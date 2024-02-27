@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
-import { fetchProducts } from "../helpers/dataFetchs";
+import { fetchProducts } from "../helpers/fetchAllProducts";
 
-export function useFetchProducts(dispatch: any) {
+export function useFetchProducts(
+  dispatch: (action: any) => void,
+  refetch: boolean
+) {
   //States
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -37,7 +40,7 @@ export function useFetchProducts(dispatch: any) {
   //Calls once GetProducts
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [refetch]);
 
   return { error, isLoading, setError, setIsLoading };
 }

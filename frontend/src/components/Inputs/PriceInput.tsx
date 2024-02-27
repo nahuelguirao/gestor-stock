@@ -8,6 +8,7 @@ export function PriceInput() {
         placeholder="150, 10.5, 20..."
         name="price"
         id="price"
+        required
       />
     </div>
   );

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ProductsContext } from "../context/ProductsContext";
 import { TableHeader } from "./ProductsTable/TableHeader";
 import { TableBody } from "./ProductsTable/TableBody";
-import { Loading } from "./Loading";
+import { Loading } from "./ProductsTable/Loading";
 import { ErrorContainer } from "./ProductsTable/Error";
 import { Link } from "react-router-dom";
 import "../styles/productsTable.css";
@@ -29,6 +29,11 @@ export function ProductsList() {
             <TableHeader />
             <TableBody products={products} />
           </table>
+        )}
+        {!isLoading && !error && products && products.length == 0 && (
+          <div className="centerContainer">
+            <p>No products. Add one!</p>
+          </div>
         )}
       </section>
     </main>

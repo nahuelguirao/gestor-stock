@@ -1,18 +1,32 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 import { ProductsList } from "./components/ProductsList";
 import { Header } from "./components/Header";
 import { AddProduct } from "./components/AddProduct";
-import { Toaster } from "react-hot-toast";
+import { UpdateProduct } from "./components/UpdateProduct";
+import { useEffect } from "react";
 
 export function App() {
+  useEffect(() => {
+    toast.success("WELCOME");
+  }, []);
+
   return (
     <BrowserRouter>
       <Header />
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          style: {
+            backgroundColor: "rgb(59, 59, 59)",
+            color: "#EEE",
+            textAlign: "center",
+          },
+        }}
+      />
       <Routes>
         <Route path="/" element={<ProductsList />} />
         <Route path="/add-product" element={<AddProduct />} />
-        {/* Route update product */}
+        <Route path="/update-product/:id" element={<UpdateProduct />} />
         {/* Route Categories */}
         {/* Route add category */}
         {/* Route update category */}
