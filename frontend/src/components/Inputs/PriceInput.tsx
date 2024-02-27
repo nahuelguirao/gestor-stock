@@ -1,4 +1,13 @@
-export function PriceInput() {
+import { ChangeEvent } from "react";
+
+interface props {
+  value: string;
+  handleChange: (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+}
+
+export function PriceInput({ value, handleChange }: props) {
   return (
     <div className="inputContainer">
       <label htmlFor="price">Price:</label>
@@ -9,6 +18,8 @@ export function PriceInput() {
         name="price"
         id="price"
         required
+        value={value}
+        onChange={handleChange}
       />
     </div>
   );

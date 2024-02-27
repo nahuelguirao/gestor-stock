@@ -1,57 +1,33 @@
 import { ProductsContext } from "../context/ProductsContext";
-import { FormEvent, useContext } from "react";
+import { useContext, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { InputValues } from "../types/types";
 import toast from "react-hot-toast";
 
-export function useAddProduct() {
-  const navigate = useNavigate();
-  const { dispatch, setRefetch } = useContext(ProductsContext);
+export function useAddProduct(inputsValues: InputValues) {
+  const { setRefetch } = useContext(ProductsContext);
 
-  const handleAddProduct = async (e: FormEvent<HTMLFormElement>) => {
+  const navigate = useNavigate();
+
+  const handleAddProduct = async (e: FormEvent) => {
     e.preventDefault();
 
-    //Creates a newProduct object from entries
-    const formData = new FormData(e.currentTarget);
-    const newProduct = Object.fromEntries(formData);
-
-    //Gets inputs value
-    const title = formData.get("title");
-    const stock = formData.get("stock");
-    const price = formData.get("price");
-
     //Validations
-    if (typeof price === "string" && typeof stock === "string") {
-      const priceNumber = parseInt(price, 10);
-      const stockNumber = parseInt(stock, 10);
-
-      if (
-        isNaN(priceNumber) ||
-        isNaN(stockNumber) ||
-        priceNumber <= 0 ||
-        stockNumber < 0
-      ) {
-        toast.error("Stock and price must be positive numbers.");
-        return;
-      }
-
-      if (stock.length > 5 || price.length >= 10) {
-        toast.error("Stock or price too long.");
-        return;
-      }
+    const { title, short_description, price, stock } = inputsValues;
+    if (title.length >= 100) {
+      toast.error("Title must be less than 100 characters.");
+      return;
     }
 
-    if (typeof title === "string") {
-      if (title.length >= 100) {
-        toast.error("Title length must be fewer than 100 characters.");
-        return;
-      }
+    if (price.length > 7 || stock.toString().length > 5) {
+      toast.error("Price or stock too long.");
+      return;
     }
 
-    //Prepare action for the reducer
-    const action = {
-      type: "ADD PRODUCT",
-      payload: newProduct,
-    };
+    if (parseInt(price) <= 0 || stock < 0) {
+      toast.error("Price and stock must be positive numbers");
+      return;
+    }
 
     const LoadingToast = toast.loading("Adding product...");
     try {
@@ -60,11 +36,10 @@ export function useAddProduct() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newProduct),
+        body: JSON.stringify({ title, short_description, stock, price }),
       });
 
       if (res.ok) {
-        dispatch(action);
         toast.dismiss(LoadingToast);
         toast.success("Product added!");
         setRefetch((prevState: boolean) => !prevState);
@@ -77,5 +52,5 @@ export function useAddProduct() {
     }
   };
 
-  return handleAddProduct;
+  return { handleAddProduct };
 }

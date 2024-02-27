@@ -1,4 +1,5 @@
 import { useAddProduct } from "../hooks/useAddProduct";
+import { useHandleNewProduct } from "../hooks/useHandleNewProduct";
 import { TitleInput } from "./Inputs/TitleInput";
 import { DescriptionInput } from "./Inputs/DescriptionInput";
 import { StockInput } from "./Inputs/StockInput";
@@ -7,15 +8,19 @@ import { Button } from "./Inputs/Button";
 import "../styles/addProduct.css";
 
 export function AddProduct() {
-  const handleAddProduct = useAddProduct();
+  const { inputsValues, handleChange } = useHandleNewProduct();
+  const { handleAddProduct } = useAddProduct(inputsValues);
 
   return (
     <form onSubmit={handleAddProduct}>
       <h1>Add Product</h1>
-      <TitleInput />
-      <DescriptionInput />
-      <StockInput />
-      <PriceInput />
+      <TitleInput value={inputsValues.title} handleChange={handleChange} />
+      <DescriptionInput
+        value={inputsValues.short_description}
+        handleChange={handleChange}
+      />
+      <StockInput value={inputsValues.stock} handleChange={handleChange} />
+      <PriceInput value={inputsValues.price} handleChange={handleChange} />
       <Button text="Add Product" />
     </form>
   );

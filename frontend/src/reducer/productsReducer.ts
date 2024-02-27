@@ -4,10 +4,7 @@ export const productsReducer = (state: Product[], action: Actions) => {
   switch (action.type) {
     case "SET PRODUCTS":
       const fetchedProducts = action.payload;
-      return fetchedProducts;
-
-    case "ADD PRODUCT":
-      const newProduct = action.payload;
-      return [...state, newProduct];
+      const finalState = [...fetchedProducts].sort((a, b) => a.id - b.id);
+      return finalState;
   }
 };

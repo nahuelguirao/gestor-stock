@@ -1,4 +1,13 @@
-export function TitleInput() {
+import { ChangeEvent } from "react";
+
+interface props {
+  value: string;
+  handleChange: (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+}
+
+export function TitleInput({ value, handleChange }: props) {
   return (
     <div className="inputContainer">
       <label htmlFor="title">Title:</label>
@@ -8,8 +17,9 @@ export function TitleInput() {
         placeholder="Iphone 18, Keyboard..."
         name="title"
         id="title"
-        min={0}
         required
+        value={value}
+        onChange={handleChange}
       />
     </div>
   );
