@@ -2,7 +2,6 @@ import { useState, useEffect, ChangeEvent } from "react";
 import { getProductInfo } from "../helpers/fetchProducInfo";
 import { useNavigate } from "react-router-dom";
 import { Product } from "../types/types";
-import toast from "react-hot-toast";
 
 export function useFetchIndividualProduct(id: string | undefined) {
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ export function useFetchIndividualProduct(id: string | undefined) {
 
   useEffect(() => {
     //Gets product data
-    getProductInfo(id, setProductInfo, toast, navigate);
+    getProductInfo(id, navigate, setProductInfo);
   }, []);
 
   //Sets the product's data in inputs values

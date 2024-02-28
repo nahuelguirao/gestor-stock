@@ -27,8 +27,9 @@ main h1 {
 
 table {
     width: 100%;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
+    padding: 0 10px;
     border-radius: 16px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     background-color: #201F1F;
@@ -49,6 +50,10 @@ th {
     max-width: 100%;
 }
 
+th {
+    font-size: 1.2rem;
+}
+
 tr {
     border-bottom: 1px solid #eeeeeea6;
     display: flex;
@@ -56,7 +61,6 @@ tr {
     align-items: center;
     text-align: center;
     gap: 16px;
-
 }
 
 table tbody tr:last-child {
@@ -71,7 +75,7 @@ tr th:first-child {
 
 tr td:nth-child(2),
 tr th:nth-child(2) {
-    width: 40%;
+    width: 55%;
 
 }
 
@@ -80,9 +84,11 @@ tr th:nth-child(3) {
     width: 25%;
 }
 
+
+
 th:last-child,
 td:last-child {
-    width: 25%;
+    width: 10%;
 }
 
 .centerContainer {
@@ -97,7 +103,11 @@ td:last-child {
     color: rgb(58, 127, 207);
 }
 
-.deleteProduct {
+.productPrice {
+    display: none;
+}
+
+.tableIcon {
     transition: 200ms;
     cursor: pointer;
 }
@@ -107,8 +117,14 @@ td:last-child {
     color: red;
 }
 
+.updateProduct:hover {
+    transform: scale(1.3);
+    color: yellow;
+}
+
 @media (min-width: 450px) {
     table {
+        width: 95%;
         padding: 0 25px;
     }
 
@@ -129,6 +145,17 @@ td:last-child {
     td {
         font-size: 1.2rem;
         font-weight: 300;
+    }
+}
+
+@media (min-width:1000px) {
+    .productPrice {
+        display: block;
+    }
+
+    tr td:nth-child(4),
+    tr th:nth-child(4) {
+        width: 20%;
     }
 }
 

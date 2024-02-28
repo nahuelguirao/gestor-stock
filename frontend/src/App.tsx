@@ -1,14 +1,17 @@
+import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { ProductsList } from "./components/ProductsList";
 import { Header } from "./components/Header";
 import { AddProduct } from "./components/AddProduct";
 import { UpdateProduct } from "./components/UpdateProduct";
-import { useEffect } from "react";
+import { ProductDetails } from "./components/ProductDetails";
 
 export function App() {
   useEffect(() => {
-    toast.success("WELCOME");
+    toast("Welcome! Touch a product title to see product details.", {
+      icon: "👋",
+    });
   }, []);
 
   return (
@@ -27,6 +30,7 @@ export function App() {
         <Route path="/" element={<ProductsList />} />
         <Route path="/add-product" element={<AddProduct />} />
         <Route path="/update-product/:id" element={<UpdateProduct />} />
+        <Route path="/product-details/:id" element={<ProductDetails />} />
         {/* Route Categories */}
         {/* Route add category */}
         {/* Route update category */}
