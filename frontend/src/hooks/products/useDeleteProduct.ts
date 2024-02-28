@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { confirmDelete } from "../helpers/confirmDelete";
+import { confirmDelete } from "../../helpers/confirmDelete";
 
 export function useDeleteProduct(dispatch: any, id: number | undefined | null) {
   const navigate = useNavigate();

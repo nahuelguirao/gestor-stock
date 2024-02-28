@@ -1,7 +1,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
-import { getProductInfo } from "../helpers/fetchProducInfo";
+import { getProductInfo } from "../../helpers/fetchProducInfo";
 import { useNavigate } from "react-router-dom";
-import { Product } from "../types/types";
+import { Product } from "../../types/types";
 
 export function useFetchIndividualProduct(id: string | undefined) {
   const navigate = useNavigate();

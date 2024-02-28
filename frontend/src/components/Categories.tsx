@@ -3,6 +3,7 @@ import { CategoriesContext } from "../context/CategoriesContext";
 import { Loading } from "./ProductsTable/Loading";
 import { ErrorContainer } from "./ProductsTable/Error";
 import { CategoryCard } from "./Categories/CategoryCard";
+import { Link } from "react-router-dom";
 import "../styles/categories.css";
 
 export function Categories() {
@@ -10,7 +11,12 @@ export function Categories() {
 
   return (
     <main className="categoriesMain">
-      <h1>Categories</h1>
+      <div className="productsHeader">
+        <h1>Categories</h1>
+        <Link to={"/add-category"} className="categoriesLinkAdd">
+          +Add category
+        </Link>
+      </div>
       <hr />
       {isLoading && <Loading />}
       {!isLoading && error && <ErrorContainer error={error} />}

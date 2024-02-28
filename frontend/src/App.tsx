@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
 import { ProductsList } from "./components/ProductsList";
 import { Header } from "./components/Header";
-import { AddProduct } from "./components/AddProduct";
-import { UpdateProduct } from "./components/UpdateProduct";
-import { ProductDetails } from "./components/ProductDetails";
+import { AddProduct } from "./components/Products/AddProduct";
+import { UpdateProduct } from "./components/Products/UpdateProduct";
+import { ProductDetails } from "./components/Products/ProductDetails";
 import { Categories } from "./components/Categories";
+import { AddCategory } from "./components/Categories/AddCategory";
+import toast, { Toaster } from "react-hot-toast";
 
 export function App() {
   useEffect(() => {
@@ -33,7 +34,7 @@ export function App() {
         <Route path="/update-product/:id" element={<UpdateProduct />} />
         <Route path="/product-details/:id" element={<ProductDetails />} />
         <Route path={"/categories"} element={<Categories />} />
-        {/* Route add category */}
+        <Route path={"/add-category"} element={<AddCategory />} />
         {/* Route update category */}
         <Route path="/*" element={<ProductsList />} />
       </Routes>

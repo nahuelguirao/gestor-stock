@@ -1,11 +1,11 @@
-import { useAddProduct } from "../hooks/useAddProduct";
-import { useHandleNewProduct } from "../hooks/useHandleNewProduct";
-import { TitleInput } from "./Inputs/TitleInput";
-import { DescriptionInput } from "./Inputs/DescriptionInput";
-import { StockInput } from "./Inputs/StockInput";
-import { PriceInput } from "./Inputs/PriceInput";
-import { Button } from "./Inputs/Button";
-import "../styles/addProduct.css";
+import { useAddProduct } from "../../hooks/products/useAddProduct";
+import { useHandleNewProduct } from "../../hooks/products/useHandleNewProduct";
+import { TitleInput } from "../Inputs/TitleInput";
+import { DescriptionInput } from "../Inputs/DescriptionInput";
+import { StockInput } from "../Inputs/StockInput";
+import { PriceInput } from "../Inputs/PriceInput";
+import { Button } from "../Inputs/Button";
+import "../../styles/addProduct.css";
 
 export function AddProduct() {
   const { inputsValues, handleChange } = useHandleNewProduct();

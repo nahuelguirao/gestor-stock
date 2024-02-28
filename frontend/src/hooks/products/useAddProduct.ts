@@ -1,7 +1,7 @@
-import { ProductsContext } from "../context/ProductsContext";
+import { ProductsContext } from "../../context/ProductsContext";
 import { useContext, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { InputValues } from "../types/types";
+import { InputValues } from "../../types/types";
 import toast from "react-hot-toast";
 
 export function useAddProduct(inputsValues: InputValues) {

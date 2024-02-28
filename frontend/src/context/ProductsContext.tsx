@@ -1,5 +1,5 @@
 import { createContext, Dispatch, ReactNode, useState } from "react";
-import { useFetchProducts } from "../hooks/useFetchProducts";
+import { useFetchProducts } from "../hooks/products/useFetchProducts";
 import { Product } from "../types/types";
 
 //CREATE CONTEXT

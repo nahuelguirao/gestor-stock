@@ -1,11 +1,11 @@
-import { useFetchIndividualProduct } from "../hooks/useFetchIndividualProduct";
+import { useFetchIndividualProduct } from "../../hooks/products/useFetchIndividualProduct";
 import { useParams } from "react-router-dom";
-import { Button } from "./Inputs/Button";
-import { useEditProducts } from "../hooks/useEditProduct";
-import { TitleInput } from "./Inputs/TitleInput";
-import { DescriptionInput } from "./Inputs/DescriptionInput";
-import { StockInput } from "./Inputs/StockInput";
-import { PriceInput } from "./Inputs/PriceInput";
+import { Button } from "../Inputs/Button";
+import { useEditProducts } from "../../hooks/products/useEditProduct";
+import { TitleInput } from "../Inputs/TitleInput";
+import { DescriptionInput } from "../Inputs/DescriptionInput";
+import { StockInput } from "../Inputs/StockInput";
+import { PriceInput } from "../Inputs/PriceInput";
 
 export function UpdateProduct() {
   const { id } = useParams();

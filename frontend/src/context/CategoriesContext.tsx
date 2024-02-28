@@ -1,4 +1,4 @@
-import { ReactNode, createContext } from "react";
+import { Dispatch, ReactNode, SetStateAction, createContext } from "react";
 import { Category, CategoryActions } from "../types/types";
 import { useFetchCategories } from "../hooks/categories/useFetchCategories";
 
@@ -6,6 +6,7 @@ import { useFetchCategories } from "../hooks/categories/useFetchCategories";
 interface ContextProps {
   categoriesState: Category[];
   dispatch: (action: CategoryActions) => void;
+  setRefetch: Dispatch<SetStateAction<boolean>>;
   isLoading: boolean;
   error: null | string;
 }
@@ -13,6 +14,7 @@ interface ContextProps {
 export const CategoriesContext = createContext<ContextProps>({
   categoriesState: [],
   dispatch: () => {},
+  setRefetch: () => {},
   isLoading: false,
   error: null,
 });
@@ -23,11 +25,12 @@ interface ProviderProps {
 }
 
 export const CategoriesContextProvider = ({ children }: ProviderProps) => {
-  const { categoriesState, dispatch, isLoading, error } = useFetchCategories();
+  const { categoriesState, dispatch, setRefetch, isLoading, error } =
+    useFetchCategories();
 
   return (
     <CategoriesContext.Provider
-      value={{ categoriesState, dispatch, isLoading, error }}
+      value={{ categoriesState, dispatch, setRefetch, isLoading, error }}
     >
       {children}
     </CategoriesContext.Provider>

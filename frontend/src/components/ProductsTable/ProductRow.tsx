@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
-import { useDeleteProduct } from "../../hooks/useDeleteProduct";
+import { useDeleteProduct } from "../../hooks/products/useDeleteProduct";
 import { useNavigate } from "react-router-dom";
 import { Product } from "../../types/types";
 import { RxCross1 } from "react-icons/rx";

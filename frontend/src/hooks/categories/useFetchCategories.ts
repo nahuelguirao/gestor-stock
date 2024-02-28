@@ -6,6 +6,7 @@ export function useFetchCategories() {
   const [categoriesState, dispatch] = useReducer(categoriesReducer, []);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
+  const [refetch, setRefetch] = useState<boolean>(false);
 
   //Fetch Categories
   const fetchCategories = async () => {
@@ -27,7 +28,7 @@ export function useFetchCategories() {
   //Calls fetching
   useEffect(() => {
     fetchCategories();
-  }, []);
+  }, [refetch]);
 
-  return { categoriesState, dispatch, isLoading, error };
+  return { categoriesState, dispatch, setRefetch, isLoading, error };
 }

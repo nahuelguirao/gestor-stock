@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useDeleteProduct } from "../hooks/useDeleteProduct";
-import { ProductsContext } from "../context/ProductsContext";
-import { getProductInfo } from "../helpers/fetchProducInfo";
-import { Product } from "../types/types";
-import { Loading } from "./ProductsTable/Loading";
-import { Button } from "./Inputs/Button";
-import "../styles/productsDetails.css";
+import { useDeleteProduct } from "../../hooks/products/useDeleteProduct";
+import { ProductsContext } from "../../context/ProductsContext";
+import { getProductInfo } from "../../helpers/fetchProducInfo";
+import { Product } from "../../types/types";
+import { Loading } from "../ProductsTable/Loading";
+import { Button } from "../Inputs/Button";
+import "../../styles/productsDetails.css";
 
 export function ProductDetails() {
   const { id } = useParams();

@@ -1,7 +1,7 @@
 import { useState, useEffect, useReducer } from "react";
-import { fetchProducts } from "../helpers/fetchAllProducts";
-import { productsReducer } from "../reducer/productsReducer";
-import { Actions } from "../types/types";
+import { fetchProducts } from "../../helpers/fetchAllProducts";
+import { productsReducer } from "../../reducer/productsReducer";
+import { Actions } from "../../types/types";
 
 export function useFetchProducts(refetch: boolean) {
   //States
