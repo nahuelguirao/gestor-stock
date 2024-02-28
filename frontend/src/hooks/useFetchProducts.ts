@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import { fetchProducts } from "../helpers/fetchAllProducts";
+import { productsReducer } from "../reducer/productsReducer";
+import { Actions } from "../types/types";
 
-export function useFetchProducts(
-  dispatch: (action: any) => void,
-  refetch: boolean
-) {
+export function useFetchProducts(refetch: boolean) {
   //States
+  const [actualProducts, dispatch] = useReducer(productsReducer, []);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -23,7 +23,7 @@ export function useFetchProducts(
       const resultProducts = await res.json();
 
       //Declarates and execute 'SET PRODUCTS' in the reducer
-      const action = {
+      const action: Actions = {
         type: "SET PRODUCTS",
         payload: resultProducts,
       };
@@ -42,5 +42,5 @@ export function useFetchProducts(
     getProducts();
   }, [refetch]);
 
-  return { error, isLoading, setError, setIsLoading };
+  return { actualProducts, dispatch, error, isLoading, setError, setIsLoading };
 }

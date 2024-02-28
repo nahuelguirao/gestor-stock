@@ -6,6 +6,11 @@ export type Product = {
   price: string;
 };
 
+export type Category = {
+  id: number;
+  name: string;
+};
+
 export type InputValues = {
   title: string;
   short_description: string;
@@ -16,3 +21,5 @@ export type InputValues = {
 export type Actions =
   | { type: "SET PRODUCTS"; payload: Product[] }
   | { type: "DELETE PRODUCT"; payload: number };
+
+export type CategoryActions = { type: "SET CATEGORIES"; payload: Category[] };

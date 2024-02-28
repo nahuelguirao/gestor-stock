@@ -1,12 +1,5 @@
-import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  useReducer,
-  useState,
-} from "react";
+import { createContext, Dispatch, ReactNode, useState } from "react";
 import { useFetchProducts } from "../hooks/useFetchProducts";
-import { productsReducer } from "../reducer/productsReducer";
 import { Product } from "../types/types";
 
 //CREATE CONTEXT
@@ -40,13 +33,10 @@ export const ProductsContextProvider = ({ children }: providerProps) => {
   const [refetch, setRefetch] = useState(false);
 
   //Products REDUCER
-  const [actualProducts, dispatch] = useReducer(productsReducer, []);
 
   //Error and loading from initial products fetch
-  const { error, isLoading, setError, setIsLoading } = useFetchProducts(
-    dispatch,
-    refetch
-  );
+  const { actualProducts, dispatch, error, isLoading, setError, setIsLoading } =
+    useFetchProducts(refetch);
 
   return (
     <ProductsContext.Provider
