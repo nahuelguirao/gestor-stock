@@ -22,4 +22,6 @@ export type Actions =
   | { type: "SET PRODUCTS"; payload: Product[] }
   | { type: "DELETE PRODUCT"; payload: number };
 
-export type CategoryActions = { type: "SET CATEGORIES"; payload: Category[] };
+export type CategoryActions =
+  | { type: "SET CATEGORIES"; payload: Category[] }
+  | { type: "DELETE CATEGORY"; payload: number };

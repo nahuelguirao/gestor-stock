@@ -1,26 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import Swal from "sweetalert2";
+import { confirmDelete } from "../helpers/confirmDelete";
 
 export function useDeleteProduct(dispatch: any, id: number | undefined | null) {
   const navigate = useNavigate();
 
   const handleDelete = async () => {
-    //Dynamic alert to confirm deleting
-    const confirmResult = await Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "green",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it",
-      cancelButtonText: "Cancel",
-      background: "#202020",
-      color: "#eee",
-    });
+    const { isConfirmed } = await confirmDelete();
 
-    if (confirmResult.isConfirmed) {
+    if (isConfirmed) {
       const action = {
         type: "DELETE PRODUCT",
         payload: id,

@@ -6,7 +6,9 @@ export const categoriesReducer = (
 ) => {
   switch (action.type) {
     case "SET CATEGORIES":
-      console.error(state); //BORRAR
       return action.payload;
+
+    case "DELETE CATEGORY":
+      return state.filter((category) => category.id !== action.payload);
   }
 };
