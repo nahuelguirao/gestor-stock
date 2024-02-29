@@ -16,6 +16,9 @@ export function Categories() {
         <Link to={"/add-category"} className="categoriesLinkAdd">
           +Add category
         </Link>
+        <p className="pInfo">
+          Touch a category name to filter products in that category!
+        </p>
       </div>
       <hr />
       {isLoading && <Loading />}

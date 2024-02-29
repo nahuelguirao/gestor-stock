@@ -7,6 +7,7 @@ import { UpdateProduct } from "./components/Products/UpdateProduct";
 import { ProductDetails } from "./components/Products/ProductDetails";
 import { Categories } from "./components/Categories";
 import { AddCategory } from "./components/Categories/AddCategory";
+import { UpdateCategory } from "./components/Categories/UpdateCategory";
 import toast, { Toaster } from "react-hot-toast";
 
 export function App() {
@@ -33,9 +34,9 @@ export function App() {
         <Route path="/add-product" element={<AddProduct />} />
         <Route path="/update-product/:id" element={<UpdateProduct />} />
         <Route path="/product-details/:id" element={<ProductDetails />} />
-        <Route path={"/categories"} element={<Categories />} />
-        <Route path={"/add-category"} element={<AddCategory />} />
-        {/* Route update category */}
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/add-category" element={<AddCategory />} />
+        <Route path="/update-category/:id" element={<UpdateCategory />} />
         <Route path="/*" element={<ProductsList />} />
       </Routes>
     </BrowserRouter>

@@ -6,7 +6,7 @@ export const categoriesReducer = (
 ) => {
   switch (action.type) {
     case "SET CATEGORIES":
-      return action.payload;
+      return action.payload.sort((a, b) => a.id - b.id);
 
     case "DELETE CATEGORY":
       return state.filter((category) => category.id !== action.payload);

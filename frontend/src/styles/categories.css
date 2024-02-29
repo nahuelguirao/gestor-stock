@@ -34,7 +34,22 @@
     gap: 32px;
 }
 
+.categoryContainerName {
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.categoryContainerName:hover {
+    color: rgb(58, 127, 207);
+    transform: scale(1.1);
+}
+
 .categoriesLinkAdd {
     font-weight: 300;
     font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.pInfo {
+    font-weight: 300;
 }
