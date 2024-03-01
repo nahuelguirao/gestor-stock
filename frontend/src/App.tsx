@@ -8,11 +8,12 @@ import { ProductDetails } from "./components/Products/ProductDetails";
 import { Categories } from "./components/Categories";
 import { AddCategory } from "./components/Categories/AddCategory";
 import { UpdateCategory } from "./components/Categories/UpdateCategory";
+import { CategoryToProduct } from "./components/Relations/CategoryToProduct";
 import toast, { Toaster } from "react-hot-toast";
 
 export function App() {
   useEffect(() => {
-    toast("Welcome! Touch a product title to see product details.", {
+    toast("Welcome! Touch a product title to manage a product.", {
       icon: "👋",
     });
   }, []);
@@ -37,6 +38,10 @@ export function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/add-category" element={<AddCategory />} />
         <Route path="/update-category/:id" element={<UpdateCategory />} />
+        <Route
+          path="/add-category-for/:productTitle/:productId"
+          element={<CategoryToProduct />}
+        />
         <Route path="/*" element={<ProductsList />} />
       </Routes>
     </BrowserRouter>

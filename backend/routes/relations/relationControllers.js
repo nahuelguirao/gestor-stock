@@ -70,17 +70,12 @@ exports.getProductCategories = async (req, res) => {
         }
 
         const query =
-            `SELECT c.name
+            `SELECT c.*
             FROM categories c
             JOIN product_categories pc ON c.id = pc.category_id
             WHERE pc.product_id = $1 `
 
         const result = await pool.query(query, [productId])
-
-        if (result.rowCount == 0) {
-            res.status(404).json({ error: 'This product does not exist or not have relations.' })
-            return
-        }
 
         res.json(result.rows)
 
