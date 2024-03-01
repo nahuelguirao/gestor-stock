@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Product } from "../../types/types";
 import toast from "react-hot-toast";
+import { BASE_URL } from "../../helpers/BASE_URL";
 
 export function useFilterByCategory() {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
@@ -13,7 +14,7 @@ export function useFilterByCategory() {
     setFirstFilter(false);
     try {
       const res = await fetch(
-        `http://localhost:3000/product-categories/${categoryId}/get-products`
+        `${BASE_URL}/product-categories/${categoryId}/get-products`
       );
 
       const data = await res.json();

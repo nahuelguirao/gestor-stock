@@ -2,6 +2,7 @@ import { useContext, FormEvent } from "react";
 import { CategoriesContext } from "../../context/CategoriesContext";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { BASE_URL } from "../../helpers/BASE_URL";
 
 export function useUpdateCategory(newValue: string, id: string | undefined) {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export function useUpdateCategory(newValue: string, id: string | undefined) {
 
     const waitingToast = toast.loading("Updating category...");
     try {
-      const res = await fetch(`http://localhost:3000/categories/${id}`, {
+      const res = await fetch(`${BASE_URL}/categories/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

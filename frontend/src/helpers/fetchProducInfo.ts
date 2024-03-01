@@ -1,5 +1,6 @@
 import { Product } from "../types/types";
 import toast from "react-hot-toast";
+import { BASE_URL } from "./BASE_URL";
 
 export const getProductInfo = async (
   id: string | undefined,
@@ -7,7 +8,7 @@ export const getProductInfo = async (
   setProductInfo?: (data: Product) => void
 ) => {
   try {
-    const res = await fetch(`http://localhost:3000/products/${id}`);
+    const res = await fetch(`${BASE_URL}/products/${id}`);
     const data = await res.json();
     setProductInfo && setProductInfo(data);
 

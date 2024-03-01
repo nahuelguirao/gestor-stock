@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { CategoriesContext } from "../../context/CategoriesContext";
 import { Category } from "../../types/types";
+import { BASE_URL } from "../../helpers/BASE_URL";
 
 export function useGetProductsCategoriesFilter(
   refetch: boolean,
@@ -17,7 +18,7 @@ export function useGetProductsCategoriesFilter(
     setIsLoading(true);
     try {
       const res = await fetch(
-        `http://localhost:3000/product-categories/${productId}/get-categories`
+        `${BASE_URL}/product-categories/${productId}/get-categories`
       );
 
       const data = await res.json();

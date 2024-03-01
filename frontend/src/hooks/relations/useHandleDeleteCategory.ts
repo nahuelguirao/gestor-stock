@@ -1,4 +1,5 @@
 import toast from "react-hot-toast";
+import { BASE_URL } from "../../helpers/BASE_URL";
 
 export function useHanldeDeleteCategory(
   setRefetch: any,
@@ -8,7 +9,7 @@ export function useHanldeDeleteCategory(
     const waitingToast = toast.loading("Deleting category...");
     try {
       const res = await fetch(
-        `http://localhost:3000/product-categories/${productId}/delete-category/${categoryId}`,
+        `${BASE_URL}/product-categories/${productId}/delete-category/${categoryId}`,
         { method: "DELETE" }
       );
 

@@ -1,2 +1,3 @@
-export const fetchProducts = async () =>
-  await fetch("http://localhost:3000/products");
+import { BASE_URL } from "./BASE_URL";
+
+export const fetchProducts = async () => await fetch(`${BASE_URL}/products`);

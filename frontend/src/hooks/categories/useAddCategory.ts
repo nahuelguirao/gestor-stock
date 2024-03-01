@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CategoriesContext } from "../../context/CategoriesContext";
 import toast from "react-hot-toast";
+import { BASE_URL } from "../../helpers/BASE_URL";
 
 export function useAddCategory() {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ export function useAddCategory() {
     const waitingToast = toast.loading("Adding Category");
 
     try {
-      const res = await fetch("http://localhost:3000/categories/", {
+      const res = await fetch(`${BASE_URL}/categories/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

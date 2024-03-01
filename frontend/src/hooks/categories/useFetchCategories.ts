@@ -1,5 +1,6 @@
 import { useReducer, useEffect, useState } from "react";
 import { categoriesReducer } from "../../reducer/categoriesReducer";
+import { BASE_URL } from "../../helpers/BASE_URL";
 
 export function useFetchCategories() {
   //States
@@ -13,7 +14,7 @@ export function useFetchCategories() {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await fetch("http://localhost:3000/categories/");
+      const res = await fetch(`${BASE_URL}/categories/`);
       const data = await res.json();
 
       dispatch({ type: "SET CATEGORIES", payload: data });

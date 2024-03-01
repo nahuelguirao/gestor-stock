@@ -2,6 +2,7 @@ import { FormEvent, useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { BASE_URL } from "../../helpers/BASE_URL";
 
 export function useEditProducts(id: string | undefined, inputsValues: any) {
   const { setRefetch } = useContext(ProductsContext);
@@ -32,7 +33,7 @@ export function useEditProducts(id: string | undefined, inputsValues: any) {
 
     //Tries update
     try {
-      const res = await fetch(`http://localhost:3000/products/${id}`, {
+      const res = await fetch(`${BASE_URL}/products/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

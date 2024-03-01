@@ -1,5 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { BASE_URL } from "../../helpers/BASE_URL";
 
 export function useHandleAddCategory() {
   const [refetch, setRefetch] = useState(false);
@@ -11,7 +12,7 @@ export function useHandleAddCategory() {
     const loadingToast = toast.loading("Adding category...");
     try {
       const res = await fetch(
-        `http://localhost:3000/product-categories/${productId}/add-category/${categoryId}`,
+        `${BASE_URL}/product-categories/${productId}/add-category/${categoryId}`,
         {
           method: "POST",
           headers: {

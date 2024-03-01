@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 import { useContext } from "react";
 import { CategoriesContext } from "../../context/CategoriesContext";
 import { confirmDelete } from "../../helpers/confirmDelete";
+import { BASE_URL } from "../../helpers/BASE_URL";
 
 export function useDeleteCategory() {
   const { dispatch } = useContext(CategoriesContext);
@@ -14,7 +15,7 @@ export function useDeleteCategory() {
       const waitingToast = toast.loading("Deleting category...");
 
       try {
-        const res = await fetch(`http://localhost:3000/categories/${id}`, {
+        const res = await fetch(`${BASE_URL}/categories/${id}`, {
           method: "DELETE",
         });
 

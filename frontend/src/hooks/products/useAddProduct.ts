@@ -3,6 +3,7 @@ import { useContext, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { InputValues } from "../../types/types";
 import toast from "react-hot-toast";
+import { BASE_URL } from "../../helpers/BASE_URL";
 
 export function useAddProduct(inputsValues: InputValues) {
   const { setRefetch } = useContext(ProductsContext);
@@ -19,6 +20,11 @@ export function useAddProduct(inputsValues: InputValues) {
       return;
     }
 
+    if (title.includes("/")) {
+      toast.error("Title can't include '/'");
+      return;
+    }
+
     if (price.length > 7 || stock.toString().length > 5) {
       toast.error("Price or stock too long.");
       return;
@@ -31,7 +37,7 @@ export function useAddProduct(inputsValues: InputValues) {
 
     const LoadingToast = toast.loading("Adding product...");
     try {
-      const res = await fetch("http://localhost:3000/products", {
+      const res = await fetch(`${BASE_URL}/products`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
