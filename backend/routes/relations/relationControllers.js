@@ -103,7 +103,7 @@ exports.getAllProductsFromCategory = async (req, res) => {
         const result = await pool.query(query, [categoryId])
 
         if (result.rowCount == 0) {
-            res.json({ message: 'No products in this category' })
+            res.json([])
             return
         }
 

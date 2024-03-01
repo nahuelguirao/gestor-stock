@@ -53,3 +53,7 @@
 .pInfo {
     font-weight: 300;
 }
+
+.filteredProductsTable {
+    margin-top: 50px;
+}

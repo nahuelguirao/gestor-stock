@@ -1,13 +1,20 @@
 import { useContext } from "react";
+import { useDeleteCategory } from "../hooks/categories/useDeleteCategory";
+import { useFilterByCategory } from "../hooks/relations/useFIlterByCategory";
 import { CategoriesContext } from "../context/CategoriesContext";
+import { FilteredProductsTable } from "./Categories/FIlteredProductsTable";
+import { CategoryCard } from "./Categories/CategoryCard";
 import { Loading } from "./ProductsTable/Loading";
 import { ErrorContainer } from "./ProductsTable/Error";
-import { CategoryCard } from "./Categories/CategoryCard";
 import { Link } from "react-router-dom";
 import "../styles/categories.css";
 
 export function Categories() {
+  const { handleDelete } = useDeleteCategory();
   const { categoriesState, isLoading, error } = useContext(CategoriesContext);
+
+  const { firstFilter, filtering, filterByCategory, filteredProducts } =
+    useFilterByCategory();
 
   return (
     <main className="categoriesMain">
@@ -31,10 +38,20 @@ export function Categories() {
       {!isLoading && !error && categoriesState.length > 0 && (
         <section className="categoriesContainer">
           {categoriesState.map((c) => (
-            <CategoryCard key={c.id} c={c} />
+            <CategoryCard
+              key={c.id}
+              c={c}
+              handleDelete={handleDelete}
+              filterByCategory={filterByCategory}
+            />
           ))}
         </section>
       )}
+      <FilteredProductsTable
+        firstFilter={firstFilter}
+        filtering={filtering}
+        filteredProducts={filteredProducts}
+      />
     </main>
   );
 }
